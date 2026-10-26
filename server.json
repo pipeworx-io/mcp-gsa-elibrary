@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/gsa-elibrary",
   "title": "Gsa Elibrary",
   "description": "GSA eLibrary — Multiple Award Schedule (MAS) contract holders.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/gsa-elibrary",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-gsa-elibrary",
