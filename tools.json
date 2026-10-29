@@ -1,0 +1,87 @@
+[
+  {
+    "name": "gsa_schedule_search",
+    "description": "Search GSA eLibrary by keyword, SIN number, NAICS code, or contractor/manufacturer name. Returns matching Multiple Award Schedule (MAS) categories/SINs and contractor matches with contract numbers — the starting point for finding who holds a GSA schedule contract.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "description": "Keyword, SIN/category number, NAICS code, contract number, or contractor/manufacturer name"
+        },
+        "search_type": {
+          "type": "string",
+          "enum": [
+            "all_words",
+            "any_words",
+            "exact_phrase"
+          ],
+          "description": "How to match multi-word keywords (default all_words)"
+        }
+      },
+      "required": [
+        "keyword"
+      ]
+    }
+  },
+  {
+    "name": "gsa_schedule_contract_holders",
+    "description": "List Multiple Award Schedule contract holders for a given SIN (Special Item Number), optionally narrowed by a keyword matched against contractor name, contract number, city, or state. Returns each holder's contract number, phone, and location. Use gsa_schedule_search first to find a valid schedule/SIN pair.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sin": {
+          "type": "string",
+          "description": "Special Item Number (SIN), e.g. \"541511\" or \"ALL 2\""
+        },
+        "schedule": {
+          "type": "string",
+          "description": "Schedule/GWAC number the SIN belongs to (default \"MAS\")"
+        },
+        "keyword": {
+          "type": "string",
+          "description": "Optional filter against contractor name, contract number, city, or state"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max holders to return (default 25, max 100)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "Pagination offset (default 0)"
+        }
+      },
+      "required": [
+        "sin"
+      ]
+    }
+  },
+  {
+    "name": "gsa_contractor_profile",
+    "description": "Look up which GSA Multiple Award Schedule(s)/GWAC(s) a contractor holds and its contract number(s) on each. Pass a known `sin` (and `schedule`) to also pull phone/city/state from that SIN's contract-holder listing. Address, email, website, SAM UEI, NAICS, socio-economic/exclusion-list status, and option-period end date are not available from this tool — eLibrary's per-contract detail page that carries them is blocked from our network; the response names this plainly.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "contractor_name": {
+          "type": "string",
+          "description": "Contractor/manufacturer name (matched case-insensitively against eLibrary's search results)"
+        },
+        "contract_number": {
+          "type": "string",
+          "description": "Optional — narrow to one specific contract number when the contractor holds several"
+        },
+        "sin": {
+          "type": "string",
+          "description": "Optional — a Special Item Number already known to be held by this contractor (e.g. from gsa_schedule_search), used to additionally pull phone/city/state"
+        },
+        "schedule": {
+          "type": "string",
+          "description": "Schedule/GWAC number the `sin` belongs to (default \"MAS\"); only used when `sin` is given"
+        }
+      },
+      "required": [
+        "contractor_name"
+      ]
+    }
+  }
+]
