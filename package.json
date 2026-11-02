@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-gsa-elibrary",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "GSA eLibrary — Multiple Award Schedule (MAS) contract holders.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "gsa-elibrary",
     "gatewaySlug": "gsa-elibrary",
-    "sourceHash": "v1-81388da8723d09864121a1691bf64081d16d16e6fb7dc3eb7ce370754c3472f0",
-    "sourceCommit": "4844029e402d6bd2fe735add8abf6d46735f8ed5"
+    "sourceHash": "v1-5648f8bc4b5fca10dc70bfd5fd29fed91cd62f389f181b8cc27ade2f3f985946",
+    "sourceCommit": "0ca9712c0ac03bb0121cc7e81b202d0c45ac02ca"
   }
 }
